@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Prediction Result</h1>
+        {% if result.is_fraudulent == 1 %}
+            <div class="alert alert-danger" role="alert">
+                The transaction is predicted to be fraudulent.
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                The transaction is predicted to be non-fraudulent.
+            </div>
+        {% endif %}
+        <a href="/predict-fraudulent-form" class="btn btn-primary mt-3">Back to Form</a>
+    </div>
+</body>
+</html>

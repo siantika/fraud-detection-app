@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Iris Classification</title>
+</head>
+
+<body>
+    <div>
+        <h1>Menentukan Iris Bunga</h1>
+        <form method="post">
+            <h3>Masukkan Kalimat Review Disini...</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label for="SepalLengthCm">Sepal Length:</label></td>
+                        <td><input type="number" id="SepalLengthCm" name="SepalLengthCm"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="SepalWidthCm">Sepal Width:</label></td>
+                        <td><input type="number" id="SepalWidthCm" name="SepalWidthCm"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="PetalLengthCm">Petal Length:</label></td>
+                        <td><input type="number" id="PetalLengthCm" name="PetalLengthCm"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="PetalWidthCm">Petal Width:</label></td>
+                        <td><input type="number" id="PetalWidthCm" name="PetalWidthCm"><br></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="submit-button" type="submit" value="Submit">
+        </form>
+        {% if PRED_RESULT %}
+        <p>Hasil Prediksinya : {{PRED_RESULT}}</p>
+        {% endif %}
+    </div>
+</body>

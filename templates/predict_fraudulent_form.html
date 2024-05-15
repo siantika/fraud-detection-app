@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block title %}Predict Fraudulent - Test Predict Endpoint{% endblock %}
+{% block jumbotron_title %}Predict Fraudulent{% endblock %}
+{% block jumbotron_description %}Deskripsi singkat untuk halaman Predict Fraudulent.{% endblock %}
+{% block content %}
+<!-- Konten spesifik untuk halaman Predict Fraudulent -->
+<div class="container mb-5">
+    <h1 class="mt-5">Test Predict Endpoint</h1>
+    <form action="/predict-fraudulent" method="post" onsubmit="return validateForm()" class="mt-3">
+        <div class="form-group">
+            <label for="Transaction ID">Transaction ID:</label>
+            <input type="text" class="form-control" id="Transaction ID" name="Transaction ID"
+                value="c12e07a0-8a06-4c0d-b5cc-04f3af688570">
+        </div>
+        <div class="form-group">
+            <label for="Customer ID">Customer ID:</label>
+            <input type="text" class="form-control" id="Customer ID" name="Customer ID"
+                value="8ca9f102-02a4-4207-ab63-484e83a1bdf0">
+        </div>
+        <div class="form-group">
+            <label for="Transaction Amount">Transaction Amount:</label>
+            <input type="text" class="form-control" id="Transaction Amount" name="Transaction Amount" value="42.32">
+        </div>
+        <div class="form-group">
+            <label for="Transaction Date">Transaction Date:</label>
+            <input type="text" class="form-control" id="Transaction Date" name="Transaction Date"
+                value="2024-03-24 23:42:43">
+        </div>
+        <div class="form-group">
+            <label for="Payment Method">Payment Method:</label>
+            <input type="text" class="form-control" id="Payment Method" name="Payment Method" value="PayPal">
+        </div>
+        <div class="form-group">
+            <label for="Product Category">Product Category:</label>
+            <input type="text" class="form-control" id="Product Category" name="Product Category" value="electronics">
+        </div>
+        <div class="form-group">
+            <label for="Quantity">Quantity:</label>
+            <input type="text" class="form-control" id="Quantity" name="Quantity" value="1">
+        </div>
+        <div class="form-group">
+            <label for="Customer Age">Customer Age:</label>
+            <input type="text" class="form-control" id="Customer Age" name="Customer Age" value="40">
+        </div>
+        <div class="form-group">
+            <label for="Customer Location">Customer Location:</label>
+            <input type="text" class="form-control" id="Customer Location" name="Customer Location"
+                value="East Jameshaven">
+        </div>
+        <div class="form-group">
+            <label for="Device Used">Device Used:</label>
+            <input type="text" class="form-control" id="Device Used" name="Device Used" value="desktop">
+        </div>
+        <div class="form-group">
+            <label for="IP Address">IP Address:</label>
+            <input type="text" class="form-control" id="IP Address" name="IP Address" value="110.87.246.85">
+        </div>
+        <div class="form-group">
+            <label for="Shipping Address">Shipping Address:</label>
+            <input type="text" class="form-control" id="Shipping Address" name="Shipping Address"
+                value="5399 Rachel Stravenue Suite 718\nNorth Blakebu...">
+        </div>
+        <div class="form-group">
+            <label for="Billing Address">Billing Address:</label>
+            <input type="text" class="form-control" id="Billing Address" name="Billing Address"
+                value="5399 Rachel Stravenue Suite 718\nNorth Blakebu...">
+        </div>
+        <div class="form-group">
+            <label for="Account Age Days">Account Age Days:</label>
+            <input type="text" class="form-control" id="Account Age Days" name="Account Age Days" value="282">
+        </div>
+        <div class="form-group">
+            <label for="Transaction Hour">Transaction Hour:</label>
+            <input type="text" class="form-control" id="Transaction Hour" name="Transaction Hour" value="23">
+        </div>
+        <div class="form-group">
+            <label for="Address Match">Address Match:</label>
+            <input type="text" class="form-control" id="Address Match" name="Address Match" value="yes">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script>
+    function validateForm() {
+        var amount = document.getElementById("Transaction Amount").value;
+        var quantity = document.getElementById("Quantity").value;
+        var age = document.getElementById("Customer Age").value;
+        var accountAge = document.getElementById("Account Age Days").value;
+        var hour = document.getElementById("Transaction Hour").value;
+
+        if (amount === "" || quantity === "" || age === "" || accountAge === "" || hour === "") {
+            alert("Numeric fields cannot be empty");
+            return false;
+        }
+    }
+</script>
+{% endblock %}
