@@ -1,27 +1,16 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
-import joblib
 import pandas as pd
 import numpy as np
-import pickle, os, re
-import nltk
+import pickle, os, re, nltk, joblib
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.models import load_model
 from flask_cors import CORS
-from sklearn.linear_model import LogisticRegression
 
 app = Flask(__name__, static_url_path='/')
 CORS(app)
 CORS(app, resources={r"/*": {"origins": "*", "allow_headers": ["Content-Type", "Authorization"]}})
 
-# Define maxlen
-maxlen = 5
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
 
 
 def preprocess_fraudulent(data,scaler):
@@ -51,9 +40,12 @@ def preprocess_fraudulent(data,scaler):
 
 
 def preprocess_sentiment(text):
-    loaded_model=joblib.load("models/sentiment.pkl")
-    loaded_stop=joblib.load("models/stopwords.pkl")
-    loaded_vec=joblib.load("models/vectorizer.pkl")
+    nltk.download('punkt')
+    nltk.download('stopwords')
+    nltk.download('wordnet')
+    loaded_model = joblib.load("models/sentiment.pkl")
+    loaded_stop = joblib.load("models/stopwords.pkl")
+    loaded_vec = joblib.load("models/vectorizer.pkl")
     label = {0: 'negative', 1: 'positive'}
     X = loaded_vec.transform([text])
     y = loaded_model.predict(X)[0]
@@ -122,12 +114,10 @@ def predict_sentiment():
         # Create an alert message based on prediction
         if prediction == 'positive':
             alert_type = 'success'
-            alert_message = 'The review is Positive.'
+            alert_message = f'The review is Positive. Proba: {proba}'
         else:
             alert_type = 'danger'
-            alert_message = 'The review is Negative.'
-
-        print(alert_message)
+            alert_message = f'The review is Negative. Proba: {proba}'
 
         # Render the result in the HTML with a Bootstrap alert
         return render_template('result_sentiment.html', alert_type=alert_type, alert_message=alert_message)
