@@ -130,7 +130,7 @@ def predict_sentiment():
         print(alert_message)
 
         # Render the result in the HTML with a Bootstrap alert
-        return render_template('result-sentiment.html', alert_type=alert_type, alert_message=alert_message)
+        return render_template('result_sentiment.html', alert_type=alert_type, alert_message=alert_message)
     # except Exception as e:
     #     return str(e)
 

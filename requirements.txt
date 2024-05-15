@@ -6,3 +6,4 @@ numpy==1.24.3
 nltk==3.8.1
 tensorflow==2.15.0
 Keras==2.15.0
+werkzeug==3.0.3
